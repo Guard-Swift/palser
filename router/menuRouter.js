@@ -1,10 +1,12 @@
 import { Router } from "express";
-import menuRouter from "./menuRouter.js";
 
 export default () => {
 
   const router = Router()
-  router.use(menuRouter())
+
+  router.get('/', (req, res) => {
+    res.render('index', { title: 'Menu' })
+  })
 
   return router
 }
