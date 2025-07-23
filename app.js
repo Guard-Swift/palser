@@ -2,6 +2,7 @@ import 'dotenv/config.js'
 
 import express from 'express'
 import createLogger from './lib/logger.js'
+import setRouter from './router/index.js'
 
 
 const app = express()
@@ -18,9 +19,7 @@ app.set('view engine', 'ejs')
 // publicをアクセス可能にする
 app.use(express.static('public'))
 
-app.get('/', (req, res) => {
-  res.render('index', { title: 'メインページ' })
-})
+app.use(setRouter())
 
 app.listen(port, () => {
   logger.info(`lesson to http://localhost:${port}`)
